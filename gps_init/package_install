@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# This installs the required packages for the Adafruit GPS sensor
+
+echo "the packages gpsd gpsd-clients and python-gps are being installed"
+
+sudo apt-get install gpsd gpsd-clients python-gps
+
