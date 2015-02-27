@@ -6,3 +6,6 @@ echo "the packages gpsd gpsd-clients and python-gps are being installed"
 
 sudo apt-get install gpsd gpsd-clients python-gps
 
+echo "point the gps daemon to our GPS device on the USB to TTY adapter cable"
+
+sudo gpsd /dev/ttyUSB0 -F /var/run/gpsd.sock

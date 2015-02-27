@@ -1,0 +1,16 @@
+#!/bin/bash
+# Initialization file for GPS
+
+echo "Connect USB Serial Port"
+
+read -p "Press [Enter] to test connection"
+
+ls /dev/ttyUSB*
+
+read -p "Press [Enter] to continue"
+
+echo "Streaming Data..."
+
+sudo cat /dev/ttyUSB0
+
+
