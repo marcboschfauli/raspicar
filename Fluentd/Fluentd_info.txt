@@ -1,0 +1,18 @@
+This is the fluentd set up file  for Debian
+
+
+http://docs.fluentd.org/articles/install-by-deb
+
+
+This is the documentation for the config file
+
+http://docs.fluentd.org/articles/config-file
+
+
+this is a collection of common log formats for fluentd to parse
+
+http://docs.fluentd.org/articles/common-log-formats
+
+to tail a log file, the tail plugin is needed.
+
+http://docs.fluentd.org/articles/in_tail 
