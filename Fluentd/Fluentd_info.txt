@@ -32,3 +32,9 @@ https://github.com/mhausenblas/alexander.thamm-demo2014/blob/master/Raspberrypi-
 
 ask Walter Simson for logon credentials
 
+Zugangsdaten:
+
+ssh mapr@172.16.0.127
+pw: mapr
+
+TODo: Configdaten und ports reinkopieren.
