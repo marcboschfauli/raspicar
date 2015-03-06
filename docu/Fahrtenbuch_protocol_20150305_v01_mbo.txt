@@ -1,0 +1,23 @@
+# Set up a DHCP Server in Windows and share the internet connection
+- Select the Wireless connection
+Eigenschaften>Freigabe>Andere Benutzern im Netzwerk gestatten 
+(Für workplace)
+- Select the Ethernet connection and git it a fix ip address
+- Download the DHCP Server for windows http://www.dhcpserver.de/cms/
+- Connect the PI to the PC via LAN 
+- Start the DHCP Wizard and start the server connection 
+- Switch to tray mode 
+- Reboot (unplug / plug) the raspberry pi and wait for the message with the new IP to pop up
+
+# Connect OBDII to Raspberry PI 
+- Current solution: startlxde and search for the bluetooth device. Connect via PPM 
+- Idea: write a bash / deamon file which automates this process and move away from the GUI
+
+# Read Data from GPS-sensor 
+- Problem encountered. No FIX found in the car 
+- Possible reason: power supply 
+- Idea: Connect everything to the car and do not connect anything else 
+
+# Read Data from OBDII 
+- There is an obdpy_record file which outputs the data to a log file. 
+- The command cat tail -f FILENAME should stream the data to the console 

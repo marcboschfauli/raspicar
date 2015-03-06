@@ -1,0 +1,18 @@
+# 1 Set up Raspian Distribution on Raspberry Pi 
+- Download the newest Raspian distribution 
+- Format the SD Card using SDFormatter
+- Use Win32Imager to Copy the image to the SD Card 
+- Plug in and start
+
+# 2 Bluetooth connection with raspberry pi
+- hcitool scan 
+- http://raspberrypi.stackexchange.com/questions/23282/bluetooth-discoverable-raspberry-pi
+  - bluetooth discoverable and bash scripts
+- http://www.cowfishstudios.com/blog/obd-pi-raspberry-pi-displaying-car-diagnostics-obd-ii-data-on-an-aftermarket-head-unit
+  - connect to OBDII device (bluetooth) 
+
+## 2.1 Bluetooth ssh connection 
+COM Port Erstellen
+http://jasiek.me/2014/10/04/bluetooth-console-on-a-raspberry-pi-using-a-usb-adapter.html
+
+http://www.elinux.org/Serial_port_programming
