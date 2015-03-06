@@ -1,8 +1,10 @@
 This is the fluentd set up file  for Debian
 
-
 http://docs.fluentd.org/articles/install-by-deb
 
+Here is the basic info for a fluentd stream file:
+
+http://docs.fluentd.org/articles/config-file#introduction-the-life-of-a-fluentd-event
 
 This is the documentation for the config file
 
@@ -16,3 +18,17 @@ http://docs.fluentd.org/articles/common-log-formats
 to tail a log file, the tail plugin is needed.
 
 http://docs.fluentd.org/articles/in_tail 
+
+
+stream is:
+
+File —> in_tail -> Fluentd —> out_(?Secure?)Forward —>Internet—> in_forward -> Fluentd -> out_copy
+
+
+
+Previous Set up
+
+https://github.com/mhausenblas/alexander.thamm-demo2014/blob/master/Raspberrypi-fluentd/config.md
+
+ask Walter Simson for logon credentials
+
