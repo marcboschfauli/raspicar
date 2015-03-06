@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# chkconfig: 35 90 12
+# description: iid service
+#
+
+# Get function from functions library
+. /etc/init.d/functions
+
+NAME=iid
+PNAME=idd
+DAEMON=/home/ec2-user/influxdb-ingest/local-influxdb-ingest.py
+SCRIPTNAME=/etc/init.d/$NAME
+
+# iid config
+INPUT_LOG_FILE_BASED=/tmp/piin.
+TIMEZONE_OFFSET=1
+TODAYS_LOGFILE=$(date +%Y%m%d).log
+
+RETVAL=0
+
+# Start the iid service
+start() {
+        echo "Starting iid service ..."
+        # launch script with dynamic log file name and static timezone offset
+        daemon python $DAEMON $INPUT_LOG_FILE_BASED$TODAYS_LOGFILE $TIMEZONE_OFFSET &
+        touch /var/lock/subsys/$NAME
+        echo "iid service up and running!"
+        RETVAL=$?
+        return $RETVAL
+}
+# Restart the iid service
+stop() {
+        echo "Stopping iid service ... "
+        killproc $DAEMON
+        ### Now, delete the lock file ###
+        rm -f /var/lock/subsys/$NAME
+        RETVAL=$?
+        return $RETVAL
+}
+### main logic ###
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  status)
+        status $NAME
+        ;;
+  restart|reload|condrestart)
+        stop
+        start
+        ;;
+  *)
+        echo $"Usage: $0 {start|stop|restart|reload|status}"
+        exit 1
+esac
+exit 0

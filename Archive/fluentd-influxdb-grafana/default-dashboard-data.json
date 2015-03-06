@@ -1,0 +1,271 @@
+{
+  "title": "Alexander Thamm MapR Demo",
+  "tags": [],
+  "style": "light",
+  "timezone": "browser",
+  "editable": true,
+  "rows": [{
+    "title": "title",
+    "height": "150px",
+    "editable": false,
+    "collapse": true,
+    "panels": [{
+      "error": false,
+      "span": 9,
+      "editable": true,
+      "type": "text",
+      "loadingEditor": false,
+      "mode": "markdown",
+      "content": "This demo shows real-time data (such as velocity, RPM, etc.), streaming in from a car equipped with a Raspberry Pi that is landed on [MapR](https://www.mapr.com/) via [fluentd](http://www.fluentd.org/).\n\n ![Streaming Architecture](https://dl.dropboxusercontent.com/u/10436738/img/at-demo/streaming-architecture-small.png \"Streaming Architecture\")\n\n----\n[Details ...](https://dl.dropboxusercontent.com/u/10436738/img/at-demo/streaming-architecture.png)",
+      "style": {},
+      "title": "Architecture"
+    }, {
+      "error": false,
+      "span": 3,
+      "editable": true,
+      "type": "text",
+      "loadingEditor": false,
+      "mode": "markdown",
+      "content": "----\n ![Alexander Thamm logo](https://dl.dropboxusercontent.com/u/10436738/img/at-demo/at-logo.png \"Alexander Thamm logo\")\n\n----\n\n ![MapR logo](https://dl.dropboxusercontent.com/u/10436738/img/at-demo/mapr-logo.png \"MapR logo\")\n",
+      "style": {},
+      "title": "Powered By"
+    }]
+  }, {
+    "title": "Car X",
+    "height": "200px",
+    "editable": true,
+    "collapse": false,
+    "collapsable": true,
+    "panels": [{
+      "span": 12,
+      "editable": true,
+      "type": "graph",
+      "datasource": "test",
+      "renderer": "flot",
+      "x-axis": true,
+      "y-axis": true,
+      "scale": 1,
+      "y_formats": ["short", "short"],
+      "grid": {
+        "leftMax": null,
+        "rightMax": null,
+        "leftMin": null,
+        "rightMin": null,
+        "threshold1": null,
+        "threshold2": null,
+        "threshold1Color": "rgba(216, 200, 27, 0.27)",
+        "threshold2Color": "rgba(234, 112, 112, 0.22)"
+      },
+      "annotate": {
+        "enable": false
+      },
+      "resolution": 100,
+      "lines": true,
+      "fill": 1,
+      "linewidth": 1,
+      "points": false,
+      "pointradius": 5,
+      "bars": false,
+      "stack": false,
+      "legend": {
+        "show": true,
+        "values": true,
+        "min": true,
+        "max": true,
+        "current": false,
+        "total": false,
+        "avg": true,
+        "rightSide": true
+      },
+      "percentage": false,
+      "zerofill": true,
+      "nullPointMode": "connected",
+      "steppedLine": false,
+      "tooltip": {
+        "value_type": "cumulative",
+        "query_as_alias": true
+      },
+      "targets": [{
+        "function": "median",
+        "column": "mph",
+        "series": "car",
+        "query": "select median(mph) from \"car\" where time > 1410535343s and time < 1410535631s group by time(0.1s) order asc",
+        "alias": "mph"
+      }],
+      "aliasColors": {
+        "mph": "#E5AC0E"
+      },
+      "aliasYAxis": {},
+      "title": "velocity"
+    }, {
+      "span": 12,
+      "editable": true,
+      "type": "graph",
+      "datasource": "test",
+      "renderer": "flot",
+      "x-axis": true,
+      "y-axis": true,
+      "scale": 1,
+      "y_formats": ["short", "none"],
+      "grid": {
+        "leftMax": null,
+        "rightMax": null,
+        "leftMin": null,
+        "rightMin": null,
+        "threshold1": null,
+        "threshold2": null,
+        "threshold1Color": "rgba(216, 200, 27, 0.27)",
+        "threshold2Color": "rgba(234, 112, 112, 0.22)"
+      },
+      "annotate": {
+        "enable": false
+      },
+      "resolution": 100,
+      "lines": true,
+      "fill": 1,
+      "linewidth": 1,
+      "points": false,
+      "pointradius": 5,
+      "bars": false,
+      "stack": false,
+      "legend": {
+        "show": true,
+        "values": true,
+        "min": true,
+        "max": true,
+        "current": false,
+        "total": false,
+        "avg": true,
+        "rightSide": true,
+        "alignAsTable": false
+      },
+      "percentage": false,
+      "zerofill": true,
+      "nullPointMode": "connected",
+      "steppedLine": false,
+      "tooltip": {
+        "value_type": "cumulative",
+        "query_as_alias": true
+      },
+      "targets": [{
+        "target": "",
+        "function": "median",
+        "column": "rpm",
+        "series": "car",
+        "query": "select median(rpm) from \"car\" where time > 1410535343s and time < 1410535631s and rpm <> 0 group by time(0.1s) order asc",
+        "alias": "RPM",
+        "condition_filter": true,
+        "condition_key": "rpm",
+        "condition_op": "<>",
+        "condition_value": "0",
+        "rawQuery": false
+      }],
+      "aliasColors": {
+        "fluentdts.fluentd_val": "#1F78C1",
+        "RPM": "#890F02"
+      },
+      "aliasYAxis": {
+        "fluentdts.fluentd_val": 2
+      },
+      "title": "tachometer"
+    }, {
+      "span": 12,
+      "editable": true,
+      "type": "graph",
+      "datasource": "test",
+      "renderer": "flot",
+      "x-axis": true,
+      "y-axis": true,
+      "scale": 1,
+      "y_formats": ["short", "short"],
+      "grid": {
+        "leftMax": null,
+        "rightMax": null,
+        "leftMin": null,
+        "rightMin": null,
+        "threshold1": null,
+        "threshold2": null,
+        "threshold1Color": "rgba(216, 200, 27, 0.27)",
+        "threshold2Color": "rgba(234, 112, 112, 0.22)"
+      },
+      "annotate": {
+        "enable": false
+      },
+      "resolution": 100,
+      "lines": true,
+      "fill": 0,
+      "linewidth": 1,
+      "points": false,
+      "pointradius": 5,
+      "bars": false,
+      "stack": false,
+      "legend": {
+        "show": true,
+        "values": true,
+        "min": true,
+        "max": true,
+        "current": false,
+        "total": false,
+        "avg": true,
+        "rightSide": true
+      },
+      "percentage": false,
+      "zerofill": true,
+      "nullPointMode": "connected",
+      "steppedLine": false,
+      "tooltip": {
+        "value_type": "cumulative",
+        "query_as_alias": true
+      },
+      "targets": [{
+        "function": "mean",
+        "column": "load",
+        "series": "car",
+        "query": "select mean(load) from \"car\" where time > 1410535343s and time < 1410535631s group by time(0.1s) order asc",
+        "alias": "load (xxx)"
+      }, {
+        "target": "",
+        "function": "mean",
+        "column": "throttle",
+        "series": "car",
+        "query": "select mean(throttle) from \"car\" where time > 1410535343s and time < 1410535631s group by time(0.1s) order asc",
+        "alias": "throttle (xxx)"
+      }],
+      "aliasColors": {
+        "load (xxx)": "#7EB26D",
+        "throttle (xxx)": "#052B51"
+      },
+      "aliasYAxis": {},
+      "title": "load"
+    }],
+    "notice": false
+  }],
+  "pulldowns": [{
+    "type": "filtering",
+    "collapse": false,
+    "notice": false,
+    "enable": false
+  }, {
+    "type": "annotations",
+    "enable": false
+  }],
+  "nav": [{
+    "type": "timepicker",
+    "collapse": false,
+    "notice": false,
+    "enable": true,
+    "status": "Stable",
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"],
+    "refresh_intervals": ["5s", "10s", "30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"],
+    "now": false
+  }],
+  "time": {
+    "from": "2014-09-12T15:22:22.641Z",
+    "to": "2014-09-12T15:27:10.638Z"
+  },
+  "templating": {
+    "list": []
+  },
+  "refresh": false,
+  "version": 2
+}
