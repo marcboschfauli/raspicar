@@ -1,0 +1,25 @@
+#!/bin/bash
+# Initialization file OBD II Bluetooth adapter
+
+
+echo "Ennable SPP"
+
+sudo hciconfig hci0 sspmode 1
+
+echo "Display Settings: "
+
+sudo hciconfig hci0 sspmode
+
+echo "Search for Bluetooth devices "
+
+sudo hciconfig hci0 piscan
+sudo sdptool add SP
+sudo hcitool scan
+
+#read -p "Press [Enter] to setup connection"
+
+echo "Connect to OBDII dongle"
+
+sudo rfcomm connect /dev/rfcomm0 00:11:22:33:44:55 1 &
+
+
