@@ -6,3 +6,12 @@ hciconfig -> see if bluetooth dongle is enabled
 /etc/init.d/bluetooth [stop/start/restart]
 
 bluez-simple-agent hci0 00:0D:18:A0:4E:35
+
+# Share internet connection and give ip address for ssh 
+* go to system preferences - network devices
+* Select dynamic ip-v4 in LAN connection 
+* Select dynamic ip-v4 in WLAN 
+** Mark the checkbox "Share internet connection" with the field "LAN" in the dropdown menu 
+* Connect raspberry pi via LAN 
+* Find ip address with cmd.exe -> arp -a (it will be the only dyn ip in the lan network)
+
