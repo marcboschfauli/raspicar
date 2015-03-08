@@ -1,0 +1,8 @@
+# Connect to obd-II from terminal
+
+hcitool scan -> find device
+hciconfig -> see if bluetooth dongle is enabled
+/etc/init.d/bluetooth status -> check bluetooth status
+/etc/init.d/bluetooth [stop/start/restart]
+
+bluez-simple-agent hci0 00:0D:18:A0:4E:35
