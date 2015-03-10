@@ -20,6 +20,4 @@ sudo hcitool scan
 
 echo "Connect to OBDII dongle"
 
-sudo rfcomm connect /dev/rfcomm0 00:11:22:33:44:55 1 &
-
-
+sudo rfcomm connect /dev/rfcomm0 00:0D:18:3A:67:89 1 &
