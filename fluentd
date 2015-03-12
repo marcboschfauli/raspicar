@@ -1,0 +1,41 @@
+#
+<source>
+  type tail
+  path /home/pi/pyobd-pi/log/*.log
+  pos_file /home/pi/fluentd/file_pos_raspicar.pos
+  tag pi1.collect
+  read_from_head true
+format none
+#format csv
+#keys key1, key2
+#time_key key1
+</source>
+
+#### Time,RPM,MPH,Throttle,Load,Fuel Status
+#### 10:55:53.994146,771,0.0,17.2549019608,31.3725490196,1000
+
+<match pi1.collect>
+  type forward
+  send_timeout 60s
+  recover_wait 10s
+  heartbeat_interval 30s
+  phi_threshold 16
+  hard_timeout 60s
+  flush_interval 20s
+ 
+ <server>
+ name mapr
+# host mapr1.alexanderthamm.de
+ host 80.147.104.161
+ port 24224
+#port 24225
+#host 54.228.99.11
+ weight 60
+ </server>
+
+<secondary>
+  type file
+  path /home/pi/fluentd/forward-failed/
+</secondary>
+
+</match>
