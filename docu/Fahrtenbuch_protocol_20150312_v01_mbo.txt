@@ -1,0 +1,9 @@
+## Deamon on startup
+* make your file executable with sudo chmod -x
+* include your file into the /etc/rc.local file (before the exit 0 line) -> write sudo filedir &
+** Required for the application to run in the background 
+* save the file and reboot the pi 
+
+## Get boot log
+* dmesg >log
+* nano log
